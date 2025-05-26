@@ -15,15 +15,15 @@ collaboration, seamless communication, and AI-assisted task management to enhanc
 - ReactJS
 - Redux Toolkit
   
-### Backend 
+  ### Backend 
 - NodeJS
 - ExpressJS
 
-### DataBases
+  ### DataBases
 - MongoDB
 - Redis
 
-### AI Integration
+  ### AI Integration
 - AI(Gemini API)
   
 ### Other Library 
