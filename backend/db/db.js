@@ -12,3 +12,12 @@ function connect() {
 }
 
 export default connect;
+
+
+/*
+**`db/db.js`**:
+    - **Database Connection Logic**: Contains the function to connect to the MongoDB
+     database using Mongoose. Handles connection events (success, error). 
+     Reads the database connection string from environment variables
+
+*/

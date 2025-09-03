@@ -1,8 +1,7 @@
-import React, { useState, useContext } from 'react'
+import { useState, useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from '../config/axios'
 import { UserContext } from '../context/user.context'
-
 const Login = () => {
 
 
@@ -28,7 +27,7 @@ const Login = () => {
 
             navigate('/')
         }).catch((err) => {
-            console.log(err.response.data)
+            console.log(err.response?.data || err.message);
         })
     }
 
@@ -68,7 +67,7 @@ const Login = () => {
                     </button>
                 </form>
                 <p className="text-gray-400 mt-4">
-                    Don't have an account? <Link to="/register" className="text-blue-500 hover:underline">Create one</Link>
+                    Don&apos;t have an account? <Link to="/register" className="text-blue-500 hover:underline">Create one</Link>
                 </p>
             </div>
         </div>
