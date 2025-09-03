@@ -9,8 +9,6 @@ import { generateResult } from './services/ai.service.js';
 
 const port = process.env.PORT || 3000;
 
-//app.listen will not work here coz we need both express and socket.io to work on a single server.. and it works well with http
-
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
@@ -108,3 +106,9 @@ io.on('connection', socket => {
 server.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 })
+
+
+/*
+//perform express and socket.io to work on a single server.. and it works well with http
+
+*/
