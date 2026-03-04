@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 import React, { useState, useEffect, useContext, useRef } from 'react'
 import { UserContext } from '../context/user.context'
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import axios from '../config/axios'
 import { initializeSocket, receiveMessage, sendMessage } from '../config/socket'
 import Markdown from 'markdown-to-jsx'
@@ -79,17 +80,6 @@ const Project = () => {
 
     }
 
-    const send = () => {
-
-        sendMessage('project-message', {
-            message,
-            sender: user
-        })
-        setMessages(prevMessages => [ ...prevMessages, { sender: user, message } ]) // Update messages state
-        setMessage("")
-
-    }
-
     function WriteAiMessage(message) {
 
         const messageObject = JSON.parse(message)
@@ -109,8 +99,21 @@ const Project = () => {
             </div>)
     }
 
+    const send = () => {
+
+        sendMessage('project-message', {
+            message,
+            sender: user
+        })
+        setMessages(prevMessages => [ ...prevMessages, { sender: user, message } ]) // Update messages state
+        setMessage("")
+
+    }
+
+    // This useEffect is used to initialize the socket and the web container
     useEffect(() => {
 
+        // Initialize the socket : 1st function of config/socket.js
         initializeSocket(project._id)
 
         if (!webContainer) {
@@ -126,12 +129,9 @@ const Project = () => {
             console.log(data)
             
             if (data.sender._id == 'ai') {
-
-
                 const message = JSON.parse(data.message)
 
                 console.log(message)
-
                 webContainer?.mount(message.fileTree)
 
                 if (message.fileTree) {
@@ -148,7 +148,7 @@ const Project = () => {
 
         axios.get(`/projects/get-project/${location.state.project._id}`).then(res => {
 
-            console.log(res.data.project)
+            // console.log(res.data.project)
 
             setProject(res.data.project)
             setFileTree(res.data.project.fileTree || {})

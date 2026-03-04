@@ -15,6 +15,8 @@ export const createProject = async (req, res) => {
     try {
 
         const { name } = req.body;
+        
+        // we are doing in because we can not access the id directly from the request body
         const loggedInUser = await userModel.findOne({ email: req.user.email });
         const userId = loggedInUser._id;
 

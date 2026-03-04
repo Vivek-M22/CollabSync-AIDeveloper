@@ -16,6 +16,7 @@ export const createUserController = async (req, res) => {
 
         const token = await user.generateJWT();
 
+        // delete user._doc.password; because we don't want to send the password to the client
         delete user._doc.password;
 
         res.status(201).json({ user, token });
@@ -53,6 +54,7 @@ export const loginController = async (req, res) => {
 
         const token = await user.generateJWT();
 
+        // delete user._doc.password; because we don't want to send the password to the client
         delete user._doc.password;
 
         res.status(200).json({ user, token });

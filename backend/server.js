@@ -16,7 +16,7 @@ const io = new Server(server, {
     }
 });
 
-
+// middleware to check if the user is authenticated for the socket.io connection
 io.use(async (socket, next) => {
 
     try {
@@ -57,10 +57,7 @@ io.use(async (socket, next) => {
 io.on('connection', socket => {
     socket.roomId = socket.project._id.toString()
 
-
-    console.log('a user connected');
-
-
+    // console.log('a user connected');
 
     socket.join(socket.roomId);
 
@@ -72,12 +69,8 @@ io.on('connection', socket => {
         socket.broadcast.to(socket.roomId).emit('project-message', data)
 
         if (aiIsPresentInMessage) {
-
-
             const prompt = message.replace('@ai', '');
-
             const result = await generateResult(prompt);
-
 
             io.to(socket.roomId).emit('project-message', {
                 message: result,
@@ -87,10 +80,8 @@ io.on('connection', socket => {
                 }
             })
 
-
             return
         }
-
 
     })
 

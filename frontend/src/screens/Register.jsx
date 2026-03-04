@@ -21,9 +21,9 @@ const Register = () => {
             email,
             password
         }).then((res) => {
-            console.log(res.data)
+            // console.log(res.data)
             localStorage.setItem('token', res.data.token)
-            setUser(res.data.user)
+            setUser(res.data.user)  // set the user in the context for the home page
             navigate('/')
         }).catch((err) => {
             console.log(err.response.data)
@@ -51,7 +51,7 @@ const Register = () => {
                     <div className="mb-6">
                         <label className="block text-gray-400 mb-2" htmlFor="password">Password</label>
                         <input
-                            onChange={(e) => setPassword(e.target.value)} s
+                            onChange={(e) => setPassword(e.target.value)}
                             type="password"
                             id="password"
                             className="w-full p-3 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"

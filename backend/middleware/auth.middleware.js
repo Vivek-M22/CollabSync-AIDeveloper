@@ -10,12 +10,11 @@ export const authUser = async (req, res, next) => {
             return res.status(401).send({ error: 'Unauthorized User' });
         }
 
+        //redis is used to store the token if the isBlackListed is true then the token is blacklisted and user is unauthorized
         const isBlackListed = await redisClient.get(token);
 
         if (isBlackListed) {
-
             res.cookie('token', '');
-
             return res.status(401).send({ error: 'Unauthorized User' });
         }
 

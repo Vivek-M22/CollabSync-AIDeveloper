@@ -3,7 +3,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai"
 
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_AI_KEY);
 const model = genAI.getGenerativeModel({
-    model: "gemini-1.5-flash",
+    model: "gemini-2.5-flash",
     generationConfig: {
         responseMimeType: "application/json",
         temperature: 0.4,
@@ -16,7 +16,7 @@ const model = genAI.getGenerativeModel({
     you write code while maintaining the working of previous code. 
     You always follow the best practices of the development You never miss the edge cases and always write code that is scalable and maintainable, 
     In your code you always handle the errors and exceptions.
-    always respond in the chat and explain the concise explanation of the code in very concised way
+    always respond in the chat and explain the concise explanation of the code in very concised way and give me the stepwise guide in the chatbox in the concise way
     
     
     Examples: 
