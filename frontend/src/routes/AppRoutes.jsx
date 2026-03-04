@@ -1,4 +1,4 @@
-import { Route, BrowserRouter, Routes } from 'react-router-dom'
+import { Route, BrowserRouter, Routes, useLocation } from 'react-router-dom'
 import Login from '../screens/Login'
 import Register from '../screens/Register'
 import Home from '../screens/Home'
@@ -6,11 +6,14 @@ import Project from '../screens/Project'
 import UserAuth from '../auth/UserAuth'
 import Navbar from '../components/Navbar'
 
-const AppRoutes = () => {
+const AppContent = () => {
+    const location = useLocation()
+    const isProjectPage = location.pathname === '/project'
+
     return (
-        <BrowserRouter>
-            <Navbar />
-            <div className="pt-16">
+        <>
+            {!isProjectPage && <Navbar />}
+            <div className={isProjectPage ? '' : 'pt-16'}>
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/login" element={<Login />} />
@@ -18,6 +21,14 @@ const AppRoutes = () => {
                     <Route path="/project" element={<UserAuth><Project /></UserAuth>} />
                 </Routes>
             </div>
+        </>
+    )
+}
+
+const AppRoutes = () => {
+    return (
+        <BrowserRouter>
+            <AppContent />
         </BrowserRouter>
     )
 }
