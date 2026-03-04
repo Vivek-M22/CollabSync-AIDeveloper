@@ -4,7 +4,7 @@ once, I attended a hackathon, communication and collaboration were typical issue
 To counteract this challenge, I created CollabSync — a collaboration chat team app with a native AI agent. It enables real-time communication and effortless collaboration. The AI agent also helps with task management, increasing productivity and efficiency.
 
 The app is still under development, so it requires some polish to be completed, but the core features are already live.
-Live at https://collab-sync-ai-developer-teams-chat.vercel.app/login 
+Live at https://collab-sync-ai-developer-teams-chat.vercel.app 
 
 ## Technical Details : 
 - Built a full-stack Collaborative Project Management with AI-powered chat system enabling real-time
@@ -38,3 +38,4 @@ collaboration, seamless communication, and AI-assisted task management to enhanc
 - Socket.io
 
   
+
